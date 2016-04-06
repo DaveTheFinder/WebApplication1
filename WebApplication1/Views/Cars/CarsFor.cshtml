@@ -1,0 +1,11 @@
+﻿@model List<WebApplication1.Models.Car>
+
+<div class="well">
+    <h2>Cars</h2>
+    <ul>
+        @foreach(var car in Model)
+        {
+            <li>@car.Make @car.ModelName @car.Year</li>
+        }
+    </ul>
+</div>

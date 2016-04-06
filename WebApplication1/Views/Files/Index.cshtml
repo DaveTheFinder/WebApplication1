@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Files";
+}
+
+<div class="row">
+
+    <div class="col-sm12">
+        <h3>Upload File: </h3>
+    </div>
+
+    @using (Html.BeginForm("Save", "Files", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="col-sm-6">
+            <input type="file" name="UploadedFile" />
+        </div>
+
+        <div class="col-sm-6">
+            <input class="btn btn-primary" type="submit" name="Submit" value="Submit" />
+        </div>
+    }
+
+</div>
+
+<br /><br />
+
+<div class="row">
+    <table class="table table-bordered table-condensed table-hover">
+        <thead>
+            <tr>
+                <th> File Name </th>
+                <th> Content Type </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var f in Model)
+            {
+                <tr>
+                    <td><a href="/files/GetFile/@f.Id">@f.FileName</a></td>
+                    <td>@f.ContentType</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
